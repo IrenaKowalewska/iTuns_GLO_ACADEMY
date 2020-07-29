@@ -5,6 +5,9 @@ export const videoPlayerInit = () => {
     const videoTimePassed = document.querySelector('.video-time__passed');
     const videoProgress = document.querySelector('.video-progress');
     const videoTimeTotal = document.querySelector('.video-time__total');
+    const videoFullscreen = document.querySelector('.video-fullscreen');
+    const videoVolume = document.querySelector('.video-volume');
+
 
     //у фавиконок есть fa-play нужно поменять на fa-pause (менять значок play/pause)
     const toggleIcon = () => {
@@ -54,12 +57,23 @@ export const videoPlayerInit = () => {
         // console.log(duration);
     });
     //промотка ( у инпутов есть событие change)
-    videoProgress.addEventListener('change', () => {
+    videoProgress.addEventListener('input', () => {
         const duration = videoPlayer.duration;
         const value = videoProgress.value;
         // значение куда кликнули умножить на постоянное значение (сколько видео длится)
         videoPlayer.currentTime = (value * duration) / 100;
     });
+
+    videoFullscreen.addEventListener('click', () => {
+        videoPlayer.requestFullscreen();
+    });
+
+    videoVolume.addEventListener('input', () => {
+        videoPlayer.volume = videoVolume.value / 100;
+    });
+
+    videoPlayer.volume = 0.5;
+    videoVolume.value = videoPlayer.volume * 100;
 };
 
 // у видео и аудио плееров есть событие:оно срабатывает при клике (toggleIcon() не нужно вызывать в togglePlay )
