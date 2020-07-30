@@ -13,6 +13,10 @@ html{-webkit-box-sizing:border-box;box-sizing:border-box}*,*::before,*::after{-w
 .radio-volume {
     max-width: 200px;
 }
+.volume-mute {
+    width: 40px;
+    cursor:pointer;
+}
 
 
 /*# sourceMappingURL=style.min.css.map */

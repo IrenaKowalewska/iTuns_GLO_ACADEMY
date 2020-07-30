@@ -46,13 +46,13 @@ export const videoPlayerInit = () => {
         // videoProgress - инпут, можем менять  его value
         videoProgress.value = (currentTime / duration) * 100;
 
-        let minutePassed = Math.floor(currentTime / 60);
+        let minutesPassed = Math.floor(currentTime / 60);
         let secondsPassed = Math.floor(currentTime % 60);
 
-        let minuteTotal = Math.floor(duration / 60);
+        let minutesTotal = Math.floor(duration / 60);
         let secondsTotal = Math.floor(duration % 60);
-        videoTimePassed.textContent = `${addZero(minutePassed)}:${addZero(secondsPassed)}`;
-        videoTimeTotal.textContent = `${addZero(minuteTotal)}:${addZero(secondsTotal)}`;
+        videoTimePassed.textContent = `${addZero(minutesPassed)}:${addZero(secondsPassed)}`;
+        videoTimeTotal.textContent = `${addZero(minutesTotal)}:${addZero(secondsTotal)}`;
         // console.log(currentTime);
         // console.log(duration);
     });

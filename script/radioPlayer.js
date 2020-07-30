@@ -6,7 +6,9 @@ export const radioPlayerInit = () => {
     const radioHeaderBig = document.querySelector('.radio-header__big');
     const radioStop = document.querySelector('.radio-stop');
     const radioVolume = document.querySelector('.radio-volume');
+    const radioMute = document.querySelector('.volume-mute');
 
+    let prevVolume;
     // конструктор audio
     const audio = new Audio();
     audio.type = 'audio/aac'; // можно и mp3
@@ -57,10 +59,17 @@ export const radioPlayerInit = () => {
 
     radioVolume.addEventListener('input', () => {
         audio.volume = radioVolume.value / 100;
+        prevVolume = audio.volume;
     });
 
-    audio.volume = 0.3;
-    radioVolume.value = audio.volume * 100;
+    radioMute.addEventListener('click', () => {
+        if (audio.volume) {
+            prevVolume = audio.volume;
+            audio.volume = 0;
+        } else {
+            audio.volume = prevVolume;
+        }
+    });
 
 };
 
