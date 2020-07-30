@@ -74,6 +74,12 @@ export const videoPlayerInit = () => {
 
     videoPlayer.volume = 0.5;
     videoVolume.value = videoPlayer.volume * 100;
+
+    videoPlayerInit.stop = () => {
+        stopPlay();
+        videoBtnPlay.classList.remove('fa-pause');
+        videoBtnPlay.classList.add('fa-play');
+    };
 };
 
 // у видео и аудио плееров есть событие:оно срабатывает при клике (toggleIcon() не нужно вызывать в togglePlay )
